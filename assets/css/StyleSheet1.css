@@ -1,0 +1,239 @@
+﻿body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #ED002F;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ffff;
+}
+
+.container {
+    max-width: 1575px;
+    margin: 0 170px 170px;
+}
+
+.header {
+    background-image: url(../images/back.png);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.header-line{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo-btn {
+    font-size: 48px;
+    color: #ffff;
+    text-decoration: none;
+}
+
+.nav-item {
+    font-size: 27px;
+    color: #ffff;
+    text-decoration: none;
+    margin-right: 60px;
+}
+
+.nav {
+    position: absolute;
+    right: 0;
+    margin-right: 172px;
+}
+
+.header-down {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header-title {
+    font-family: 'Nunito', 900, sans-serif;
+    font-weight: 900;
+    font-size: 108px;
+    text-align: center;
+}
+.header-title:after {
+    content: "";
+    display: block;
+    width: 125px;
+    height: 5px;
+    background-color: #ffff;
+    margin: 30px auto;
+    margin-bottom: 50px;
+}
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 44px;
+    font-size: 30px;
+    border-radius: 15px;
+    border: 5px solid #ffff;
+    align-items: center;
+}
+
+.button {
+    color: #ffff;
+    text-decoration: none;
+}
+.section {
+    background-color: #ffff;
+    color: #ED002F;
+    padding: 50px 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.section-header {
+    width: 100%;
+    max-width: 1662px;
+    margin-bottom: 0 auto 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 48px;
+}
+
+.section-title:after {
+    content: "";
+    display: block;
+    width: 125px;
+    height: 5px;
+    background-color: #ED002F;
+    margin: 16px auto 0;
+    margin-bottom: 50px;
+}
+.section-body {
+    display: flex;
+    justify-content: space-between;
+}
+.section-body-image {
+    padding: 100px 0px;
+    margin-right: 60px;
+}
+.section-body-about {
+    right: 0
+}
+.section-body-about-title {
+    font-size: 64px;
+}
+
+.section-body-about-text {
+    background-color: #ED002F;
+    color: #ffff;
+    border-radius: 30px;
+    padding: 20px 45px;
+    font-size: 32px;
+    text-align:left;
+}
+
+.section-ot {
+    color: #ffff;
+    padding: 50px 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.section-ot-title {
+    font-size: 48px;
+}
+
+.section-ot-title:after {
+    content: "";
+    display: block;
+    width: 125px;
+    height: 5px;
+    background-color: #ffff;
+    margin: 16px auto 0;
+    margin-bottom: 50px;
+}
+
+.section-ot-header {
+    width: 100%;
+    max-width: 1662px;
+    margin-bottom: 0 auto 50px;
+    text-align: center;
+}
+
+.section-ot-body {
+    display: flex;
+    justify-content: space-between
+}
+.section-ot-body-item {
+    width: 400px;
+    text-align: center;
+    font-size: 36px;
+    margin-right: 26px;
+}
+
+.section-ot2-header {
+    width: 100%;
+    max-width: 1662px;
+    margin-bottom: 0 auto 220px;
+    text-align: center;
+    color: #ED002F;
+}
+
+.section-ot2-title {
+    font-size: 48px;
+}
+
+.section-ot2-title:after {
+    content: "";
+    display: block;
+    width: 125px;
+    height: 5px;
+    background-color: #ED002F;
+    margin: 16px auto 0;
+    margin-bottom: 50px;
+}
+
+.section-ot2-body {
+    color: #ED002F;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-ot2-body-image {
+    padding: 100px 0px;
+    margin-right: 196px;
+}
+
+.section-ot2-body-about {
+    padding: 100px 0px;
+    right: 0;
+}
+
+.section-ot2-body-about-title {
+    font-size: 64px;
+}
+
+.section-ot2-body-about-text {
+    background-color: #ED002F;
+    color: #ffff;
+    border-radius: 30px;
+    padding: 29.5px 58px;
+    font-size: 32px;
+    text-align: left;
+}
+
+.footer {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 25px 25px;
+    justify-content: center;
+    font-size: 16px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.copyright {
+    padding-top: 25px;
+}
