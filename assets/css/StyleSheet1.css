@@ -287,3 +287,12 @@ body {
 .modal.open .modal-box {
     transform: scale(0);
 }
+
+.my-modal-close-btn {
+    border: none;
+    background-color:transparent;
+    position:absolute;
+    padding: 5px;
+    top: 8px;
+    right: 8px;
+}
