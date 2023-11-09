@@ -1,4 +1,4 @@
-﻿body {
+body {
     margin: 0;
     font-family: 'Nunito', sans-serif;
     background: #ED002F;
@@ -17,7 +17,6 @@
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
-    text-align: center;
 }
 
 .header-line{
@@ -45,26 +44,38 @@
     margin-right: 172px;
 }
 
-.header-down {
+.header_side{
+    text-align: center;
+    display: flex;
+    justify-content: left;
+}
+.header_down_block1{
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: scale(1) translate(-0.5%, -50%);
+    text-align: left;
+    display: table;
+    justify-content: left;
+}
+.header-down {
+    display: flex;
+    align-items: center;
 }
 
 .header-title {
     font-family: 'Nunito', 900, sans-serif;
     font-weight: 900;
     font-size: 108px;
-    text-align: center;
+    text-align: left;
 }
 .header-title:after {
     content: "";
     display: block;
-    width: 125px;
-    height: 5px;
+    width: 250px;
+    height: 10px;
+    border-radius: 15px;
     background-color: #ffff;
-    margin: 30px auto;
+    margin-top: 30px;
     margin-bottom: 50px;
 }
 .btn {
@@ -72,13 +83,14 @@
     vertical-align: top;
     padding: 10px 44px;
     font-size: 30px;
-    border-radius: 15px;
+    border-radius: 30px;
     border: 5px solid #ffff;
+    background-color: #ffff;
     align-items: center;
 }
 
 .button {
-    color: #ffff;
+    color: #ED002F;
     text-decoration: none;
 }
 .section {
