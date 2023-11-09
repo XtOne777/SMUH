@@ -7,10 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
-    <title>Pajor</title>
+    <title>SMUH</title>
 </head>
 <body>
     <div class="header">
+        <div class="modal" id="my-modal">
+            <div class="modal__box">
+                <button class="modal__close-btn" id="close-modal-btn"></button>
+                <div class="modal-title-2">Оставьте свой номер телефона</div>
+                <div class="modal-title">Вскоре наши волонтёры свяжутся с вами!</div>
+                <div><input type="tel" class="modal-input" placeholder="+7 (999) 999-99-99"></div>
+                <a type="submit" class="modal-btn" href="#" onclick="closePopup()">Отправить</a>
+            </div>
+        </div>
+
         <div class="container">
             <div class="header-line">
                 <div class="header-logo">
@@ -31,8 +41,21 @@
                         <div class="line"></div>
                     </div>
                     <div class="btn">
-                        <a class="button" href="#">Начать общение</a>
+                        <a class="open-modal-btn button" href="#" onclick="openPopup()">Начать общение</a>
                     </div>
+
+                    <script>
+                        let popup = document.getElementById("my-modal")
+
+                        function openPopup(){
+                            popup.classList.add("open-modal");
+                        }
+
+                        function closePopup(){
+                            popup.classList.remove("open-modal");
+                        }
+
+                    </script>
                 </div>
             </div>
         </div>
@@ -73,9 +96,9 @@
 
 
 <footer class="footer">
-        <div class="copyright">
-            © Copyright 2023 | Pajor
-        </div>
+    <div class="copyright">
+        © Copyright 2023 | Pajor
+    </div>
 </footer>
 </body>
 </html>
