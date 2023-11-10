@@ -361,7 +361,7 @@ body {
 }
 
 .modal-input{
-    background-image: url(../images/search.png);
+    background-image: url(./images/search.png);
     background-position: 5px 5px;
     background-repeat: no-repeat;
     background-size: 27.7px 30px;
