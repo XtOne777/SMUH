@@ -325,6 +325,40 @@ body {
 ::placeholder{
     color: #E15C76;
 }
+
+.inp-file span{
+    position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	font-size: 14px;
+	vertical-align: middle;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	background-color: #ED002F;
+	line-height: 22px;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+}
+.inp-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+
+.inp-file {
+	position: relative;
+	display: inline-block;
+}
+
 .modal-input{
     background-image: url(../images/search.png);
     background-position: 5px 5px;
