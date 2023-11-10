@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="assets/css/StyleSheet1.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='StyleSheet1.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
         </div>
         <div class="section-body">
             <div class="section-body-image">
-                <img src="assets/images/Group 4.png">
+                <img src="../static/images/Group 4.png" alt="">
             </div>
             <div class="section-body-about">
                 <div class="section-body-about-title">EMIT</div>

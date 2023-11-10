@@ -1,35 +1,63 @@
 from flask import Flask, render_template, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Length, Email
+from wtforms.validators import DataRequired, Length
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+from flask_wtf.file import FileField, FileAllowed
+import os
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'some_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///smuh.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 db = SQLAlchemy(app)
 
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(60), nullable=False)
+app.config['SECRET_KEY'] = 'some_secret_key'
+app.config['UPLOAD_FOLDER'] = 'documents'
 
 
-class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=4, max=20)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+class Volunteer(db.Model):
+    user = db.Column(db.String(30), primary_key=True)
+    first_name = db.Column(db.String(30), nullable=False)
+    last_name = db.Column(db.String(30), nullable=False)
+    image_path = db.Column(db.String(255))
+    phone = db.Column(db.String(20))
+
+
+class Elder(db.Model):
+    elder_id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(30), nullable=False)
+    last_name = db.Column(db.String(30), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    address = db.Column(db.String(100), nullable=False)
+
+    def _repr_(self):
+        return '<Elder %r>' % self.elder_id
+
+
+class Order(db.Model):
+    order_id = db.Column(db.Integer, primary_key=True)
+    elder_id = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def _repr_(self):
+        return '<Order %r>' % self.order_id
+
+
+class VolunteerRegistrationForm(FlaskForm):
+    user = StringField('User', validators=[DataRequired(), Length(min=4, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
+    phone = StringField('Phone', validators=[DataRequired()])
+    image = FileField('Image', validators=[FileAllowed(['png', 'jpg', 'jpeg', 'gif'], 'Images only!')])
     submit = SubmitField('Register')
 
 
-class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+class VolunteerLoginForm(FlaskForm):
+    user = StringField('User', validators=[DataRequired(), Length(min=4, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
+    phone = StringField('Phone', validators=[DataRequired()])
     submit = SubmitField('Login')
 
 
@@ -40,11 +68,17 @@ def index():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
+    form = VolunteerRegistrationForm()
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
-        db.session.add(user)
+
+        if form.image.data:
+            image_path = save_image(form.image.data)
+        else:
+            image_path = None
+
+        volunteer = Volunteer(user=form.user.data, phone=form.phone.data, password=hashed_password, image=image_path)
+        db.session.add(volunteer)
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
@@ -52,12 +86,19 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    form = VolunteerLoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and check_password_hash(user.password, form.password.data):
+        volunteer = Volunteer.query.filter_by(user=form.user.data).first()
+        if volunteer and check_password_hash(volunteer.password, form.password.data):
             return redirect(url_for('index'))
     return render_template('login.html', form=form)
+
+
+def save_image(image):
+    filename = secure_filename(image.filename)
+    image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    image.save(image_path)
+    return image_path
 
 
 if __name__ == '__main__':
