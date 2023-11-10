@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="assets/css/StyleSheet1.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='StyleSheet1.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
-    <title>Welcome, {{ username }}</title>
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -15,17 +14,29 @@
             padding: 0;
         }
 
+        .top-section {
+            background-color: #ed002f;
+            font-family-color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
         h2 {
             margin-bottom: 20px;
-            color: black;
-            text-align: center;
+            color: white;
         }
 
         .welcome-message {
             font-size: 36px;
-            color: black;
+            color: white;
             margin-bottom: 30px;
             text-align: center;
+        }
+
+        .main-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            text-align: left;
         }
 
         .bordered-numbers {
@@ -35,6 +46,7 @@
             text-align: left;
             color: black;
         }
+
         .phone-number {
             border: 2px solid #ccc;
             padding: 10px;
@@ -42,14 +54,18 @@
             font-size: 24px;
         }
     </style>
+    <title>Welcome</title>
 </head>
 <body>
-        <h2>Добро пожаловать, {{ username }}</h2>
+    <div class="top-section">
+        <h2>Добро пожаловать, Волонтер!</h2>
         <div class="welcome-message" >Ты можешь позвонить им</div>
+    </div>
+    <div class="main-section">
         <div class="bordered-numbers">
-            <p class="phone-number">Номер 1: XXX-XXX-XXXX</p>
-            <p class="phone-number">Номер 2: XXX-XXX-XXXX</p>
-            <p class="phone-number">Номер 3: XXX-XXX-XXXX</p>
+            {% for phone_number in phone_numbers %}
+                <p class="phone-number">Номер: {{ phone_number }}</p>
+            {% endfor %}
         </div>
 </body>
 </html>

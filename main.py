@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length
@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask_wtf.file import FileField, FileAllowed
 import os
+import csv
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///smuh.db'
@@ -61,9 +62,42 @@ class VolunteerLoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        phone_number = request.form.get('phone_number')
+
+        if phone_number:
+            save_to_csv(phone_number)
+
     return render_template('HTMLPage1.html')
+
+
+@app.route('/prof', methods=['GET'])
+def prof():
+    phone_numbers = read_phone_numbers_from_csv('numbers.csv')
+    return render_template('prof.html', phone_numbers=phone_numbers)
+
+
+def read_phone_numbers_from_csv(file_path):
+    phone_numbers = []
+    with open(file_path, 'r', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            phone_numbers.append(row[0])
+    return phone_numbers
+
+
+def save_to_csv(phone_number):
+    filename = 'numbers.csv'
+    fieldnames = ['Phone Number']
+    file_exists = os.path.isfile(filename)
+
+    with open(filename, 'a', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow({'Phone Number': phone_number})
 
 
 @app.route('/register', methods=['GET', 'POST'])
