@@ -127,6 +127,7 @@ body {
 }
 .section-body-image {
     padding: 100px 0px;
+    margin-top: 40px;
     margin-right: 60px;
 }
 .section-body-about {
@@ -141,7 +142,7 @@ body {
     color: #ffff;
     border-radius: 30px;
     padding: 20px 45px;
-    font-size: 32px;
+    font-size: 28px;
     text-align:left;
 }
 
@@ -181,7 +182,7 @@ body {
 .section-ot-body-item {
     width: 400px;
     text-align: center;
-    font-size: 36px;
+    font-size: 28px;
     margin-right: 26px;
 }
 
