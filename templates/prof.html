@@ -40,17 +40,19 @@
         }
 
         .bordered-numbers {
-            border: 2px solid #ccc;
+            border: none;
             padding: 20px;
             margin-top: 20px;
-            text-align: left;
+            text-align: center;
             color: black;
         }
 
         .phone-number {
             border: 2px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            width: 400px;
+            margin-bottom: 5px;
             font-size: 24px;
         }
     </style>
@@ -64,7 +66,9 @@
     <div class="main-section">
         <div class="bordered-numbers">
             {% for phone_number in phone_numbers %}
-                <p class="phone-number">Номер: {{ phone_number }}</p>
+            <div class="phone-number">
+                <p>Номер {{phone_numbers.index(phone_number) + 1}}: {{ phone_number }}</p>
+            </div>
             {% endfor %}
         </div>
 </body>

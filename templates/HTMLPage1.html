@@ -16,8 +16,10 @@
                 <button class="modal__close-btn" id="close-modal-btn"></button>
                 <div class="modal-title-2">Оставьте свой номер телефона</div>
                 <div class="modal-title">Вскоре наши волонтёры свяжутся с вами!</div>
-                <div><input type="tel" class="modal-input" placeholder="+7 (999) 999-99-99"></div>
-                <a type="submit" class="modal-btn" href="#" onclick="closePopup()">Отправить</a>
+                <form method="post" action="/">
+                    <div><input type="tel" class="modal-input" name="phone_number" placeholder="+7 (999) 999-99-99"></div>
+                    <button type="submit" class="modal-btn" onclick="closePopup()">Отправить</button>
+                </form>
             </div>
         </div>
 
@@ -102,7 +104,7 @@
 
 <footer class="footer">
     <div class="copyright">
-        © Copyright 2023 | Pajor
+        © Copyright 2023 | SMUH
     </div>
 </footer>
 </body>

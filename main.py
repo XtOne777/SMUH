@@ -114,7 +114,7 @@ def register():
         volunteer = Volunteer(user=form.user.data, phone=form.phone.data, password=hashed_password, image=image_path)
         db.session.add(volunteer)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect('prof.hrml')
     return render_template('register.html', form=form)
 
 
