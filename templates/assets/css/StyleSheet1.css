@@ -326,9 +326,15 @@ body {
     color: #E15C76;
 }
 .modal-input{
-    border-radius: 10px;
-    border: 4px solid #ED002F;
-    width: 95%;
+    background-image: url(../images/search.png);
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    background-size: 27.7px 30px;
+    padding-left: 40px;
+    border-radius: 3px;
+    border: none;
+    border-left: 5px solid #ED002F;
+    width: 72.5%;
     color: #ED002F;
     font-family: 'Nunito', sans-serif;
     font-size: 28px;
